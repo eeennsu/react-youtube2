@@ -1,16 +1,21 @@
 import type { FC } from 'react';
-
-
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RootLayout from './pages/layout/RootLayout';
+import { Feed, DetailVideo, DetailChannel, SearchFeed } from './pages';
 
 const App: FC = () => {
 
-
-
     return (
-        <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores voluptatem tempore debitis voluptatibus eaque? Nobis nam excepturi fugit sit praesentium officia saepe repudiandae placeat unde maiores nostrum cupiditate, quos modi architecto asperiores doloremque incidunt error, nihil aperiam! Quidem fuga impedit quos ut. Accusantium tempore nihil at laudantium nostrum rem perferendis?
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<RootLayout />}>
+                    <Route index element={<Feed />}/>
+                    <Route path='/video/:id' element={<DetailVideo />}/>
+                    <Route path='/channel/:id' element={<DetailChannel />}/>
+                    <Route path='/search/:searchTerm' element={<SearchFeed />}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 };
 
