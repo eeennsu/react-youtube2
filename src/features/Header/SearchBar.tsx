@@ -1,4 +1,5 @@
-import { useRef, type FC, FormEvent, ChangeEvent } from 'react';
+import type { FC, FormEvent } from 'react';
+import { useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar: FC = () => {

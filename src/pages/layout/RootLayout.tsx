@@ -38,7 +38,7 @@ const RootLayout: FC = () => {
     return (
         <StyledEngineProvider injectFirst>
             <ThemeProvider theme={theme}>
-                <div className='flex flex-col min-h-[100dvh] '>
+                <div className='flex flex-col min-h-[100dvh] bg-black text-white'>
                     <Header />
                     <main className='flex-grow'>
                         <Outlet />

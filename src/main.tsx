@@ -5,8 +5,14 @@ import './index.css'
 
 import '@fontsource/roboto/500.css';
 
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <App />
+        <QueryClientProvider client={queryClient}>
+            <App />
+        </QueryClientProvider>      
     </React.StrictMode>,
 );
