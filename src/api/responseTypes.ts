@@ -15,22 +15,24 @@ type PageInfo = {
     resultsPerPage: number;
 }
 
+type Snippet = {
+    channelId: string;
+    channelTitle: string;
+    description: string;
+    liveBroadcastContent: string | 'none';
+    publishTime: string;
+    publishedAt: string;
+    thumbnails: Thumbnails;
+    title: string;
+}
+
 type SuggestedVideoItem = {
     kind: string;
     id: {
         kind: string;
         videoId: string;
     }
-    snippet: {
-        channelId: string;
-        title: string;
-        description: string;
-        thumbnails: Thumbnails;
-        channelTitle: string;
-        liveBroadcastContent: string | 'none';
-        publishTime: string;
-        publishedAt: string;
-    }
+    snippet: Snippet;
 }
 
 type ResponseType_suggestedVideos = {
@@ -42,13 +44,11 @@ type ResponseType_suggestedVideos = {
 
 type SearchVideoItem = {
     kind: string;
-    id: string;
-    snippet: {
-        title: string;
-        description: string;
-        customUrl: string;
-        publishedAt: string;
-    }
+    id: {
+        kind: string;
+        videoId: string;
+    };
+    snippet: Snippet;
     thumbnails: Thumbnails;
     localized: {
         title: string;
@@ -79,9 +79,56 @@ type SearchVideoItem = {
     }
 }
 
-type ResponseType_search = {
+type ResponseType_searchVideos = {
     kind: string;
     pageInfo: PageInfo;
-    items: SearchVideoItem[]
+    items: SearchVideoItem[],
+    regionColde: string;
+    nextPageToken: string;
 }
 
+type ChannelInfoItem = {
+    brandingSettings: {
+        channel: {
+            title: string;
+        }
+    };
+    contentDetails: {
+        id: string;
+        kind: string;
+    }
+    snippet: {
+        customUrl: string;
+        description: string;
+        localized: {
+            title: string;
+            description: string;
+        };
+        publishedAt: string;
+        thumbnails: Thumbnails;
+        title: string;
+    }
+}
+
+type ResponseType_channelInfo = {
+    items: ChannelInfoItem[];
+    kind: string;
+    pageInfo: PageInfo
+}   
+
+type ChannelVideosItem = {
+    id: {
+        kind: string;
+        playlistId: string;
+    };
+    kind: string;
+    snippets: Snippet;
+}
+
+type Response_channelVideos = {
+    items: ChannelVideosItem[];
+    kind: string;
+    nextPageToken: string;
+    pageInfo: PageInfo;
+    regionCode: string;
+}

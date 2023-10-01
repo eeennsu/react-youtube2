@@ -1,11 +1,14 @@
 import type { FC } from 'react';
+import { Box } from '@mui/material';
+import { ChannelInfo, ChannelVideos } from '../features/DetailChannel';
 
 const DetailChannel: FC = () => {
 
     return (
-        <div>
-            DetailChannel
-        </div>
+        <Box minHeight='95dvh'>
+            <ChannelInfo />
+            <ChannelVideos />
+        </Box>
     );
 };
 

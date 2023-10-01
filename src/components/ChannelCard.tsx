@@ -37,7 +37,7 @@ const ChannelCard: FC<Props> = ({ channel: { snippet: { channelId, channelTitle,
                 bgcolor: '#131212'      
             }}
         >       
-            <CardMedia image={thumbnails.high.url || demoProfilePicture} sx={{
+            <CardMedia image={thumbnails.high?.url || demoProfilePicture} sx={{
                 borderRadius: '50%',
                 height: 190,
                 width: 190, 

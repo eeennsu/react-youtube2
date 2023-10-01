@@ -9,7 +9,7 @@ import { demoChannelTitle, demoThumbnailUrl, demoVideoTitle } from '../utils/con
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography, Box } from '@mui/material';
 
 type Props = {
-    video: SuggestedVideoItem;
+    video: SuggestedVideoItem | SearchVideoItem;
 }
 
 const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, channelTitle, publishTime, title, thumbnails } } }) => {
@@ -37,7 +37,7 @@ const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, 
                         component='img'
                         height={180}
                         width={360}
-                        image={thumbnails.medium.url || demoThumbnailUrl}
+                        image={thumbnails?.medium?.url || demoThumbnailUrl}
                         alt={title}
                         sx={{
                             objectFit: 'cover'

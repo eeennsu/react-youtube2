@@ -1,14 +1,20 @@
 import type { FC, FormEvent } from 'react';
 import { useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import useSidebarStore from '../../zustand/sidedbar/sidebarStore';
 
 const SearchBar: FC = () => {
     
+    const { setSelectedCategory } = useSidebarStore();
+
     const refSearchTerm = useRef<HTMLInputElement | null>(null);
+
+
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        alert(refSearchTerm.current?.value);
+        
+        setSelectedCategory(refSearchTerm.current?.value as string);
     }   
 
     return (

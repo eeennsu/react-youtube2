@@ -6,12 +6,12 @@ type Props = {
     isLoading: boolean;
     isError: boolean;
     error: unknown;
-    items?: SuggestedVideoItem[];     // null일 수도 있으므로
+    items?: SuggestedVideoItem[] | SearchVideoItem[];     // null일 수도 있으므로
 }
 
 const VideosTable: FC<Props> = ({ isError, isLoading, items, error }) => {
 
-    return (
+    return (    
         <Stack
             direction={'row'}
             sx={{
