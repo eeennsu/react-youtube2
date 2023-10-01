@@ -21,8 +21,9 @@ const Sidebar: FC = () => {
                     xs: '6px',
                     md: '16px'
                 },
-                my: {
-                    md: '14px'
+                mt: 4,
+                width: {
+                    md: 220
                 }
             }}
         >

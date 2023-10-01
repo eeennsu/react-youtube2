@@ -2,12 +2,19 @@ import type { FC } from 'react';
 import { logo } from '../../utils/constants';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../features/Header/SearchBar';
+import useSidebarStore from '../../zustand/sidedbar/sidebarStore';
 
 const Header: FC = () => {
 
+    const { selectedCategory, setSelectedCategory } = useSidebarStore();
+
+    const handleResetCategory = () => {
+        setSelectedCategory('');
+    }
+
     return (
         <header className='sticky top-0 flex items-center justify-around px-2 py-3 gap-x-12 lg:gap-x-0 lg:justify-between lg:px-4'>
-            <div className='flex items-center'>
+            <div className='flex items-center' onClick={handleResetCategory}>
                 <Link to='/'>
                     <img src={logo} className='h-[45px]' />
                 </Link>

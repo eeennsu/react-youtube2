@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { SidebarStoreType } from './type';
 
 const useSidebarStore = create<SidebarStoreType>(set => ({
-    selectedCategory: 'New',
+    selectedCategory: '',
     setSelectedCategory: (selectedCategory) => set(state => ({ selectedCategory }))
 }));
 
