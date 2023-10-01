@@ -5,18 +5,17 @@ import useSidebarStore from '../../zustand/sidedbar/sidebarStore';
 
 const SearchBar: FC = () => {
     
-    const { setSelectedCategory } = useSidebarStore();
+    const { setSelectedCategory, setIsSearched } = useSidebarStore();
 
     const refSearchTerm = useRef<HTMLInputElement | null>(null);
-
-
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         setSelectedCategory(refSearchTerm.current?.value as string);
-    }   
-
+        setIsSearched(true);
+    }                       
+    
     return (
         <form
             onSubmit={handleSubmit}

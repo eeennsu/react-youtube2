@@ -9,14 +9,15 @@ import { demoChannelTitle, demoThumbnailUrl, demoVideoTitle } from '../utils/con
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography, Box } from '@mui/material';
 
 type Props = {
-    video: SuggestedVideoItem | SearchVideoItem;
+    video?: SuggestedVideoItem | SearchVideoItem;
+    channelVideo?: ChannelVideosItem;
 }
 
-const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, channelTitle, publishTime, title, thumbnails } } }) => {
+const VideoCard: FC<Props> = ({ video, channelVideo }) => {
 
     const compareTime = useMemo(() => (
-        formatRelativeTime(new Date(), publishTime)
-    ), [publishTime]);
+        formatRelativeTime(new Date(), (video?.snippet.publishTime || channelVideo?.snippet.publishTime) as string)
+    ), [video?.snippet.publishTime, channelVideo?.snippet.publishTime]);
   
     return (
             <Card 
@@ -32,13 +33,13 @@ const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, 
                     }
                 }}
             >
-                <Link to={`/video/${videoId}`}>
+                <Link to={`/video/${video?.id.videoId || channelVideo?.id.playlistId}`}>
                     <CardMedia
                         component='img'
                         height={180}
                         width={360}
-                        image={thumbnails?.medium?.url || demoThumbnailUrl}
-                        alt={title}
+                        image={video?.snippet?.thumbnails?.medium?.url || channelVideo?.snippet.thumbnails.medium.url || demoThumbnailUrl}
+                        alt={video?.snippet.title || channelVideo?.snippet.title}
                         sx={{
                             objectFit: 'cover'
                         }}
@@ -54,7 +55,7 @@ const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, 
                             whiteSpace: 'nowrap',
                             width: '100%'
                         }}>
-                            {title || demoVideoTitle}                       
+                            {video?.snippet.title || channelVideo?.snippet.title|| demoVideoTitle}                       
                         </Typography>
                     </CardContent>
                     <CardActions 
@@ -80,9 +81,13 @@ const VideoCard: FC<Props> = ({ video: { id: { videoId }, snippet: { channelId, 
                         flexDirection: 'column',
                         rowGap: 0.5
                     }}>
-                        <span className='w-full overflow-hidden font-bold text-right sm:w-44 whitespace-nowrap text-ellipsis'>
-                            {channelTitle || demoChannelTitle}
-                        </span>
+                        {
+                            video?.id.videoId && (
+                                <span className='w-full overflow-hidden font-bold text-right sm:w-44 whitespace-nowrap text-ellipsis'>
+                                    {video?.snippet.channelTitle || demoChannelTitle}
+                                </span>
+                            )
+                        }
                         <span className='text-xs text-right text-gray-600'>
                             {compareTime || '알 수 없음'}
                         </span>

@@ -8,11 +8,9 @@
 import Feed from './Feed';
 import DetailVideo from './DetailVideo';
 import DetailChannel from './DetailChannel';
-import SearchFeed from './SearchFeed';
 
 export {
     Feed,
-    DetailVideo,
+    DetailVideo,    
     DetailChannel,
-    SearchFeed
 }

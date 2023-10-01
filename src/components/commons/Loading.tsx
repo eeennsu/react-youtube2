@@ -1,11 +1,15 @@
 import type { FC } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const Loading: FC = () => {
+type Props = {
+    size?: number;
+}
+
+const Loading: FC<Props> = ({ size = 50 }) => {
 
     return (
         <div className='flex items-center justify-center w-full h-full'>
-            <CircularProgress color='secondary' />
+            <CircularProgress color='warning' size={size} />
         </div>
     );
 };

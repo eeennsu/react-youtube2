@@ -5,7 +5,7 @@ import { ChannelInfo, ChannelVideos } from '../features/DetailChannel';
 const DetailChannel: FC = () => {
 
     return (
-        <Box minHeight='95dvh'>
+        <Box>
             <ChannelInfo />
             <ChannelVideos />
         </Box>

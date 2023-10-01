@@ -26,6 +26,13 @@ type Snippet = {
     title: string;
 }
 
+type Statistics = {
+    viewCount: string;
+    subscriberCount:string;
+    hiddenSubscriberCount: boolean;
+    videoCount: string;
+}
+
 type SuggestedVideoItem = {
     kind: string;
     id: {
@@ -60,12 +67,7 @@ type SearchVideoItem = {
             uploads: string;
         }
     };
-    statistics: {
-        viewCount: string;
-        subscriberCount:string;
-        hiddenSubscriberCount: boolean;
-        videoCount: string;
-    };
+    statistics: Statistics;
     brandingSettings: {
         channel: {
             title: string;
@@ -96,7 +98,7 @@ type ChannelInfoItem = {
     contentDetails: {
         id: string;
         kind: string;
-    }
+    };
     snippet: {
         customUrl: string;
         description: string;
@@ -107,7 +109,8 @@ type ChannelInfoItem = {
         publishedAt: string;
         thumbnails: Thumbnails;
         title: string;
-    }
+    };
+    statistics: Statistics;
 }
 
 type ResponseType_channelInfo = {
@@ -122,7 +125,7 @@ type ChannelVideosItem = {
         playlistId: string;
     };
     kind: string;
-    snippets: Snippet;
+    snippet: Snippet;
 }
 
 type Response_channelVideos = {

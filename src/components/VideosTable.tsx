@@ -7,9 +7,10 @@ type Props = {
     isError: boolean;
     error: unknown;
     items?: SuggestedVideoItem[] | SearchVideoItem[];     // null일 수도 있으므로
+    chanelVideosItem?: ChannelVideosItem[];
 }
 
-const VideosTable: FC<Props> = ({ isError, isLoading, items, error }) => {
+const VideosTable: FC<Props> = ({ isError, isLoading, items, error, chanelVideosItem }) => {
 
     return (    
         <Stack
@@ -41,6 +42,11 @@ const VideosTable: FC<Props> = ({ isError, isLoading, items, error }) => {
                         <ChannelCard key={item.snippet.channelId} channel={item}/>
                     ) : null
                 )) 
+            }
+            {
+                chanelVideosItem?.map((item) => (
+                    <VideoCard key={item.id.playlistId} channelVideo={item}/> 
+                ))
             }
         </Stack>
     );

@@ -8,12 +8,13 @@ type Props = {
 
 const MenuListItem: FC<Props> = ({ category }) => {
 
-    const { selectedCategory, setSelectedCategory } = sidebarStore();
+    const { selectedCategory, setSelectedCategory, setIsSearched } = sidebarStore();
 
     const isSelected = selectedCategory === category.name;
 
     const handleCategoryChange = () => {
         setSelectedCategory(category.name)
+        setIsSearched(false);
     }
 
     return (

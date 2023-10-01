@@ -37,14 +37,16 @@ const ChannelCard: FC<Props> = ({ channel: { snippet: { channelId, channelTitle,
                 bgcolor: '#131212'      
             }}
         >       
-            <CardMedia image={thumbnails.high?.url || demoProfilePicture} sx={{
-                borderRadius: '50%',
-                height: 190,
-                width: 190, 
-                mt: 2,           
-                objectFit: 'cover',
-                border: '1px solid #e3e3e3',        
-            }} 
+            <CardMedia 
+                image={thumbnails.high?.url || demoProfilePicture} 
+                sx={{
+                    borderRadius: '50%',
+                    height: 190,
+                    width: 190, 
+                    mt: 2,           
+                    objectFit: 'cover',
+                    border: '1px solid #e3e3e3',        
+                }} 
             />
             <CardContent sx={{
                 display: 'flex',              
@@ -55,9 +57,9 @@ const ChannelCard: FC<Props> = ({ channel: { snippet: { channelId, channelTitle,
                 mt: 'auto'
             }}>                    
                 <Typography variant='h6' className='line-clamp-2' sx={{                  
-                    overflow: 'hidden', // 글자가 넘칠 경우 숨깁니다.
-                    whiteSpace: 'nowrap', // 글자를 줄 바꿈하지 않고 한 줄에 표시합니다.
-                    textOverflow: 'ellipsis', // 글자가 넘칠 경우 ... 으로 표시합니다.
+                    overflow: 'hidden', 
+                    whiteSpace: 'nowrap', 
+                    textOverflow: 'ellipsis',
                 }}>
                     {channelTitle || demoChannelTitle}
                 </Typography>                    

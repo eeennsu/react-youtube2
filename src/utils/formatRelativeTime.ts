@@ -1,6 +1,8 @@
 // 시간 날짜 차이 계산 함수
 export function formatRelativeTime(date1: Date, date2: string): string {
 
+    if (!date2) return '';
+
     const diffInMilliseconds = date1.getTime() - new Date(date2).getTime();
     const rtf = new Intl.RelativeTimeFormat('ko', { numeric: 'auto' });
 

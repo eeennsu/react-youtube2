@@ -6,11 +6,12 @@ import useSidebarStore from '../zustand/sidedbar/sidebarStore';
 import Videos from '../features/Feed/SuggestedVideos';
 import SuggestedVideos from '../features/Feed/SuggestedVideos';
 import OtherVideos from '../features/Feed/OtherVideos';
+import { Title } from '../components';
 
 const Feed: FC = () => {
 
-    const { selectedCategory } = useSidebarStore();
-
+    const { selectedCategory, isSearched } = useSidebarStore();
+                        
     return (
         <Stack sx={{ 
             flexDirection: {
@@ -54,27 +55,35 @@ const Feed: FC = () => {
                 },
                 overflowY: 'auto',
                 
-            }}>
-                <Typography 
-                    variant='h4' 
-                    sx={{
-                        display: 'flex',
-                        gap: 1,
-                        fontSize: 34,
-                        fontWeight: 600,
-                        p: 1
-                    }}
-                >
-                    {selectedCategory === '' ? 'Recommend' : selectedCategory}
-                    <span className='text-red-600'>Videos</span>
-                </Typography>      
-                    {
-                        selectedCategory === '' ? (
-                            <SuggestedVideos />
-                        ) : (
-                            <OtherVideos />
-                        )
-                    }                                                              
+            }}>      
+                {
+                    !isSearched ? (
+                        <Title>
+                            {
+                                selectedCategory === '' ? 'Recommend' : (
+                                    <>
+                                        {selectedCategory}&nbsp;
+                                    </>
+                                )
+                            }
+                            <span className='text-red-600'>
+                                Videos
+                            </span>
+                        </Title>
+                    ) : (
+                        <Title>
+                            <span className='text-red-600'>Search Result for</span>  
+                            <span>{selectedCategory}</span>
+                        </Title>
+                    )
+                }
+                {
+                    selectedCategory === '' ? (
+                        <SuggestedVideos />
+                    ) : (
+                        <OtherVideos />
+                    )
+                }                                                              
             </Box>
         </Stack>
     );
