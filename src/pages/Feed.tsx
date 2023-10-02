@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Sidebar from '../features/Feed/Sidebar';
 import useSidebarStore from '../zustand/sidedbar/sidebarStore';
-import Videos from '../features/Feed/SuggestedVideos';
-import SuggestedVideos from '../features/Feed/SuggestedVideos';
-import OtherVideos from '../features/Feed/OtherVideos';
+import Videos from '../features/Feed/Videos';
 import { Title } from '../components';
 
 const Feed: FC = () => {
@@ -72,7 +70,7 @@ const Feed: FC = () => {
                         </Title>
                     )
                 }
-                <OtherVideos />                                                            
+                <Videos />                                                            
             </Box>
         </Stack>
     );

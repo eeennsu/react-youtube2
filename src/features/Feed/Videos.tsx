@@ -1,13 +1,16 @@
-import type { FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getSuggestedVideos_API } from '../../api/api';
+import type { FC } from 'react';
+import useSidebarStore from '../../zustand/sidedbar/sidebarStore';
+import { videoSearch_API } from '../../api/api';
 import VideosTable from '../../components/VideosTable';
 
-const SuggestedVideos: FC = () => {
+const Videos: FC = () => {
+
+    const { selectedCategory } = useSidebarStore();
 
     const { data, isLoading, isError, error } = useQuery(
-        ['getSuggestedVideos'],
-        getSuggestedVideos_API,
+        ['/search', { selectedCategory }],
+        () => videoSearch_API(selectedCategory),
         {
             refetchOnWindowFocus: false,
         }
@@ -23,4 +26,4 @@ const SuggestedVideos: FC = () => {
     );
 };
 
-export default SuggestedVideos;
+export default Videos;
