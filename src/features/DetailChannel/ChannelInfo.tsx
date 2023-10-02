@@ -7,15 +7,15 @@ import { ChannelCard, Loading } from '../../components';
 
 const ChannelInfo: FC = () => {
 
-    const { id } = useParams();
+    const { channelId } = useParams();
 
     const { data, isError, error, isLoading } = useQuery(
-        ['getDetailChannel', { id }],
-        () => getDetailChannel_API(id),
+        ['getDetailChannel', { channelId }],
+        () => getDetailChannel_API(channelId),
         {
             staleTime: Infinity,
             retry: 1,
-            enabled: Boolean(id),
+            enabled: Boolean(channelId),
             refetchOnWindowFocus: false,
         }
     );

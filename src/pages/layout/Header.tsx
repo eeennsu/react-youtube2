@@ -1,26 +1,27 @@
 import type { FC } from 'react';
 import { logo } from '../../utils/constants';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../../features/Header/SearchBar';
 import useSidebarStore from '../../zustand/sidedbar/sidebarStore';
 
 const Header: FC = () => {
 
+    const navigate = useNavigate();    
+
     const { selectedCategory, setSelectedCategory, setIsSearched } = useSidebarStore();
 
     const handleResetCategory = () => {
-        setSelectedCategory('');
+        navigate('/');
+        setSelectedCategory('New');
         setIsSearched(false);
     }
-    
+
     return (
         <header className='sticky top-0 flex items-center justify-around px-2 py-3 gap-x-12 lg:gap-x-0 lg:justify-between lg:px-4'>
-            <div className='flex items-center' onClick={handleResetCategory}>
-                <Link to='/'>
-                    <img src={logo} className='h-[45px]' />
-                </Link>
+            <div className='flex items-center cursor-pointer' onClick={handleResetCategory}>
+                <img src={logo} className='h-[45px]' />
             </div>  
-            <div>
+            <div className='w-56 md:w-72 lg:w-full'>
                 <SearchBar />
             </div>    
         </header>

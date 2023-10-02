@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Footer, Header } from '.';
+import { Header } from '.';
 import { Outlet } from 'react-router-dom';
 import { Container } from '@mui/material';
 
@@ -42,8 +42,7 @@ const RootLayout: FC = () => {
                     <Header />
                     <main className='flex-grow'>
                         <Outlet />
-                    </main>
-                    <Footer />
+                    </main>               
                 </div>
             </ThemeProvider>            
         </StyledEngineProvider>        

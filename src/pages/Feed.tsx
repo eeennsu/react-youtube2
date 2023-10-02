@@ -57,33 +57,22 @@ const Feed: FC = () => {
                 
             }}>      
                 {
-                    !isSearched ? (
+                    isSearched ? 
+                    (
                         <Title>
-                            {
-                                selectedCategory === '' ? 'Recommend' : (
-                                    <>
-                                        {selectedCategory}&nbsp;
-                                    </>
-                                )
-                            }
+                            <span className='text-red-600'>Search Result for</span>  
+                            <span>{selectedCategory}</span>
+                        </Title>                       
+                    ) : (
+                        <Title>
+                            {selectedCategory}&nbsp;
                             <span className='text-red-600'>
                                 Videos
                             </span>
                         </Title>
-                    ) : (
-                        <Title>
-                            <span className='text-red-600'>Search Result for</span>  
-                            <span>{selectedCategory}</span>
-                        </Title>
                     )
                 }
-                {
-                    selectedCategory === '' ? (
-                        <SuggestedVideos />
-                    ) : (
-                        <OtherVideos />
-                    )
-                }                                                              
+                <OtherVideos />                                                            
             </Box>
         </Stack>
     );

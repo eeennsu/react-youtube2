@@ -8,20 +8,20 @@ import { Box } from '@mui/material';
 
 const ChannelVideos: FC = () => {
 
-    const { id } = useParams();
+    const { channelId } = useParams();
 
     const { data, isError, error, isLoading } = useQuery(
-        ['getChannelVideos', { id }],
-        () => getChannelVideos_API(id),
+        ['getChannelVideos', { channelId }],
+        () => getChannelVideos_API(channelId),
         {
             staleTime: Infinity,
             retry: 1,
-            enabled: Boolean(id),
+            enabled: Boolean(channelId),
             refetchOnWindowFocus: false,
         }
-    )
+    );
 
-    console.log('channelVideos', data?.data);
+    console.log(data?.data);
 
     return (
         <Box sx={{

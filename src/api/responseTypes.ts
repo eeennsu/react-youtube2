@@ -135,3 +135,49 @@ type Response_channelVideos = {
     pageInfo: PageInfo;
     regionCode: string;
 }
+
+type DetailVideoItem = {
+    contentDetails: {
+        caption: 'false' | 'true'
+        contentRating: unknown;
+        definition: string;
+        dimension: string;
+        duration: string;
+        licensedContent: string;
+        projection: string;
+    };
+    id: string;
+    kind: string;
+    snippet: {
+        categoryId: string;
+        channelId: string;
+        channelTitle: string;
+        defaultAudioLanguage: string;
+        defaultLanguage: string;
+        description: string; 
+        liveBroadcastContent: string;
+        localized: {
+            description: string;
+            title: string;
+        }
+        publishedAt: string;
+        tags: string[];
+        thumbnails: Thumbnails & {
+            maxres: Thumbnail;
+            standard: Thumbnail;
+        };
+        title: string;
+    }
+    statistics: {
+        commentCount: string;
+        favoriteCount: string;
+        likeCount: string;
+        viewCount: string;
+    }
+}
+
+type Response_detailVideo = {
+    items: DetailVideoItem[];
+    kind: string;
+    pageInfo: PageInfo;
+}

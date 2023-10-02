@@ -1,8 +1,8 @@
 import axiosInst from './axiosInst';
 
-export const getSuggestedVideos_API = () => 
+export const getSuggestedVideos_API = (videoId: string) => 
     axiosInst.get<ResponseType_suggestedVideos>('/search', { params: {
-        relatedToVideoId: '7ghhRHRP6t4',
+        relatedToVideoId: videoId,
         part: 'id,snippet',
         type: 'video',
         maxResults: '50',
@@ -41,6 +41,16 @@ export const getChannelVideos_API =
             part: 'snippet,id',
             order: 'date',
             maxResults: '50'
+        }
+    }
+);
+
+export const getDetailVideo_API = 
+    (videoId: string) => 
+    axiosInst.get<Response_detailVideo>('/videos', {
+        params: {
+            part: 'contentDetails,snippet,statistics',
+            id: videoId,
         }
     }
 );

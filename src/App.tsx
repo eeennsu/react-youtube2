@@ -10,8 +10,8 @@ const App: FC = () => {
             <Routes>
                 <Route path='/' element={<RootLayout />}>
                     <Route index element={<Feed />}/>
-                    <Route path='/video/:id' element={<DetailVideo />}/>
-                    <Route path='/channel/:id' element={<DetailChannel />}/>
+                    <Route path='/video/:videoId' element={<DetailVideo />}/>
+                    <Route path='/channel/:channelId' element={<DetailChannel />}/>
                     {/* <Route path='/search/:searchTerm' element={<SearchFeed />}/> */}
                 </Route>
             </Routes>

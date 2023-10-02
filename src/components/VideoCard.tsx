@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import { formatRelativeTime } from '../utils/formatRelativeTime';
 
@@ -15,12 +15,18 @@ type Props = {
 
 const VideoCard: FC<Props> = ({ video, channelVideo }) => {
 
+    const navigate = useNavigate();
     const compareTime = useMemo(() => (
         formatRelativeTime(new Date(), (video?.snippet.publishTime || channelVideo?.snippet.publishTime) as string)
     ), [video?.snippet.publishTime, channelVideo?.snippet.publishTime]);
   
+    const handleVideoLink = () => {
+        navigate(`/video/${video?.id.videoId || channelVideo?.id.playlistId}`);
+    }
+    
     return (
             <Card 
+                onClick={handleVideoLink}
                 className='transition-transform hover:scale-105'
                 sx={{ 
                     width: {

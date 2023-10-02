@@ -25,7 +25,7 @@ const SearchBar: FC = () => {
                 <SearchIcon className='text-white'/>
             </button>
             <input 
-                className='text-lg text-white bg-transparent border-none outline-none md:text-xl placeholder:text-gray-300/50' 
+                className='w-full text-lg text-white bg-transparent border-none outline-none md:text-xl placeholder:text-gray-300/50' 
                 placeholder='Saerch...'
                 ref={refSearchTerm}
             />

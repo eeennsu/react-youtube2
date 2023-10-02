@@ -16,8 +16,6 @@ const OtherVideos: FC = () => {
         }
     );  
 
-    console.log(data?.data);
-
     return (
         <VideosTable 
             isLoading={isLoading}
