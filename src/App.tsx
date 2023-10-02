@@ -6,7 +6,7 @@ import { Feed, DetailVideo, DetailChannel } from './pages';
 const App: FC = () => {
 
     return (
-        <BrowserRouter basename={import.meta.env.DEV ? '/' : '/react-youtube2/'}>
+        <BrowserRouter basename={import.meta.env.DEV ? '/react-youtube2/' : '/'}>
             <Routes>
                 <Route path='/' element={<RootLayout />}>
                     <Route index element={<Feed />}/>

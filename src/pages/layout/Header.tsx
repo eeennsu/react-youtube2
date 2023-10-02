@@ -21,7 +21,7 @@ const Header: FC = () => {
             <div className='flex items-center cursor-pointer' onClick={handleResetCategory}>
                 <img src={logo} className='h-[45px]' />
             </div>  
-            <div className='w-56 md:w-72 lg:w-full'>
+            <div className='w-56 md:w-72 lg:w-1/3'>
                 <SearchBar />
             </div>    
         </header>
