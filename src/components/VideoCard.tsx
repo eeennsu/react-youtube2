@@ -36,6 +36,8 @@ const VideoCard: FC<Props> = ({ video, channelVideo }) => {
                     },
                     mx: {
                         xs: 'auto'
+                    },
+                    
                     }
                 }}
             >
