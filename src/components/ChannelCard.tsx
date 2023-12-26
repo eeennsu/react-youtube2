@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Box, CardContent, CardMedia, Typography, Card } from '@mui/material';
-import { demoChannelTitle, demoProfilePicture } from '../utils/constants';
+import { demoChannelTitle, demoProfilePicture } from '../constants';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {

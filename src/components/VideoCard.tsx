@@ -5,7 +5,7 @@ import { formatRelativeTime } from '../utils/formatRelativeTime';
 
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { demoChannelTitle, demoThumbnailUrl, demoVideoTitle } from '../utils/constants';
+import { demoChannelTitle, demoThumbnailUrl, demoVideoTitle } from '../constants';
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography, Box } from '@mui/material';
 
 type Props = {
@@ -29,17 +29,16 @@ const VideoCard: FC<Props> = ({ video, channelVideo }) => {
                 onClick={handleVideoLink}
                 className='transition-transform hover:scale-105'
                 sx={{ 
-                    width: {
-                        xs: '90%',
-                        sm: 332,
-                        md: 304
-                    },
-                    mx: {
-                        xs: 'auto'
-                    },
-                    
+                        width: {
+                            xs: '90%',
+                            sm: 332,
+                            md: 304
+                        },
+                        mx: {
+                            xs: 'auto'
+                        }                        
                     }
-                }}
+                }
             >
                 <Link to={`/video/${video?.id.videoId || channelVideo?.id.playlistId}`}>
                     <CardMedia

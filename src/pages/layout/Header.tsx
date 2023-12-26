@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { logo } from '../../utils/constants';
+import { logo } from '../../constants';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../../features/Header/SearchBar';
 import useSidebarStore from '../../zustand/sidedbar/sidebarStore';

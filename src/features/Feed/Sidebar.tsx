@@ -1,6 +1,6 @@
 import type  { FC } from 'react';
 import { Stack } from '@mui/material';
-import { categories } from '../../utils/constants';
+import { categories } from '../../constants';
 import MenuListItem from './MenuListItem';
 
 const Sidebar: FC = () => {
